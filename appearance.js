@@ -10,7 +10,7 @@
     document.documentElement.dataset.theme = dark?'dark':'light';
     document.documentElement.dataset.accent = prefs.accent;
     document.documentElement.style.colorScheme = dark?'dark':'light';
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark?'#14151b':'#f7f7fb');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark?'#10151d':'#f2f4f7');
   };
   window.budgetAppearance = {prefs, set(key,value){
     if(key==='theme'&&!['light','dark','system'].includes(value))return;

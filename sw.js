@@ -1,4 +1,4 @@
-const CACHE='my-budget-v6';
+const CACHE='my-budget-v7';
 const FILES=['./','./index.html','./style.css','./app.js','./appearance.js','./budget.js','./bank.js','./operations.js','./pdf-import.js','./vendor/pdfjs/pdf.mjs','./vendor/pdfjs/pdf.worker.mjs','./config.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('my-budget-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
