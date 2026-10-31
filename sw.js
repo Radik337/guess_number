@@ -1,5 +1,5 @@
-const CACHE='my-budget-v5';
-const FILES=['./','./index.html','./style.css','./app.js','./budget.js','./bank.js','./operations.js','./pdf-import.js','./vendor/pdfjs/pdf.mjs','./vendor/pdfjs/pdf.worker.mjs','./config.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
+const CACHE='my-budget-v6';
+const FILES=['./','./index.html','./style.css','./app.js','./appearance.js','./budget.js','./bank.js','./operations.js','./pdf-import.js','./vendor/pdfjs/pdf.mjs','./vendor/pdfjs/pdf.worker.mjs','./config.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('my-budget-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||!FILES.some(f=>new URL(f,self.registration.scope).pathname===url.pathname))return;event.respondWith(fetch(event.request).then(response=>{if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(c=>c.put(event.request,copy)));}return response;}).catch(()=>caches.match(event.request)));});
