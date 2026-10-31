@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "python3 -m http.server 5173 --bind 0.0.0.0",
-    "test": "node tests/budget.test.js && node tests/bank.test.js",
-    "check": "node --check app.js && node --check budget.js && node --check bank.js && node --check pdf-import.js && node --check sw.js"
+    "test": "node tests/budget.test.js && node tests/bank.test.js && node tests/operations.test.js",
+    "check": "node --check app.js && node --check budget.js && node --check bank.js && node --check pdf-import.js && node --check sw.js && node --check operations.js"
   }
 }
