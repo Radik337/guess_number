@@ -1,1 +1,11 @@
-{"name":"my-budget","version":"0.1.0","private":true,"type":"module","scripts":{"start":"python3 -m http.server 5173 --bind 0.0.0.0","test":"node --test","check":"node --check app.js && node --check budget.js"}}
+{
+  "name": "my-budget",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 5173 --bind 0.0.0.0",
+    "test": "node tests/budget.test.js && node tests/bank.test.js",
+    "check": "node --check app.js && node --check budget.js && node --check bank.js && node --check pdf-import.js && node --check sw.js"
+  }
+}
